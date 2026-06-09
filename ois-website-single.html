@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIS | Olusegun Integrated Solutions - Professional Engineering & ICT Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 
+            Olusegun Integrated Solutions (OIS) - Integrated Stylesheet
+            Author: OLUSEGUN
+            Date: June 2026
+        */
+
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #1a1a1a;
+            --accent-color: #007bff;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --dark-gray: #2d3436;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-color: #3498db;
+            --secondary-color: #f4f4f4;
+            --text-color: #f4f4f4;
+            --light-gray: #1a1a1a;
+            --white: #121212;
+            --dark-gray: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-50 {
+            margin-bottom: 50px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.sticky {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] nav.sticky {
+            background-color: rgba(18, 18, 18, 0.95);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Projects Section */
+        .filter-btns {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 86, 179, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-item {
+            min-width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .client-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: var(--white);
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Utilities & Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-gray);
+            transition: var(--transition);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-actions .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">OIS</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-toggle" id="theme-btn">🌙</div>
+                <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2 class="wel">Welcome to Olusegun Integrated Solution</h2>
+            <h1 class="reveal">Innovative Solutions In  Technology, Engineering, & Agriculture</h1>
+            <p class="reveal">Providing Plumbing, Borehole, Engineering, Agriculture, ICT like <a href="ictprt.html">Full Stack Development</a> and General Contract Services with excellence and integrity.</p>
+            <div class="hero-btns reveal">
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+                <a href="#about" class="btn btn-outline" style="color: white; border-color: white;">View Our Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="text-center mb-50">
+                <h2 class="reveal">About OIS</h2>
+                <p class="reveal">Olusegun Integrated Solutions is a multi-service company dedicated to providing high-quality technical and professional services across Nigeria.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item text-center reveal">
+                    <span class="stat-number" data-target="500">0</span>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item text-center reveal">
+                    <span class="stat-number" data-target="1200">0</span>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item text-center reveal">
+                    <span class="stat-number" data-target="15">0</span>
+                    <p>Years of Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" id="services" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="text-center mb-50">
+                <h2 class="reveal">Our Services</h2>
+                <p class="reveal">Comprehensive engineering and digital solutions tailored to your specific needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <i class="fas fa-faucet"></i>
+                    <h3>Plumbing Services</h3>
+                    <p>Expert plumbing installations, repairs, and maintenance for residential and industrial complexes.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-water"></i>
+                    <h3>Borehole Drilling</h3>
+                    <p>Professional borehole drilling, pump installation, and comprehensive water system management.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>ICT Solutions</h3>
+                    <p>Custom web development, mobile applications, and robust networking solutions for modern businesses.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-building"></i>
+                    <h3>Building Construction</h3>
+                    <p>End-to-end building construction services from architectural design to final structural finishing.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Electrical Installation</h3>
+                    <p>Safe, efficient, and certified electrical systems design and installation for all building types.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Solar Energy</h3>
+                    <p>Sustainable renewable energy solutions including solar panel installation and inverter systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section-padding" id="projects">
+        <div class="container">
+            <div class="text-center mb-50">
+                <h2 class="reveal">Featured Projects</h2>
+                <p class="reveal">Our Recent Project.</p>
+            </div>
+            <div class="project-grid">
+                <div class="project-item reveal">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Industrial Plumbing">
+                    <div class="project-overlay">
+                        <h3>Industrial Plumbing</h3>
+                        <p>Factory Water System</p>
+                    </div>
+                </div>
+                <div class="project-item reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Web Development">
+                    <div class="project-overlay">
+                        <h3>Web Development</h3>
+                        <p>Corporate E-commerce Site</p>
+                    </div>
+                </div>
+                <div class="project-item reveal">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Solar Installation">
+                    <div class="project-overlay">
+                        <h3>Solar Installation</h3>
+                        <p>50KW Residential Power</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="text-center mb-50">
+                <h2 class="reveal">What Our Clients Say</h2>
+            </div>
+            <div class="testimonial-slider reveal">
+                <div class="testimonial-track">
+                    <div class="testimonial-item">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-img">
+                        <p>"OIS delivered exceptional plumbing services for our new office complex. Their attention to detail and professionalism is unmatched."</p>
+                        <h4>- Engr. David Okon</h4>
+                        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="client-img">
+                        <p>"The solar installation was seamless. We now enjoy 24/7 power supply, significantly reducing our operational costs."</p>
+                        <h4>- Mrs. Amina Yusuf</h4>
+                        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="text-center mb-50">
+                <h2 class="reveal">Get In Touch</h2>
+                <p class="reveal">Contact us today for a free consultation and quote on your next project.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +234 812 379 2226</p>
+                    <p><i class="fas fa-envelope"></i> olusegunintegratedsolution@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Along Federal Polytechnic Ilaro, Beside IBD Hotel Express Ilaro, Ogun State</p>
+                    <div style="margin-top: 30px;">
+                        <a href="https://wa.me/2348001234567" class="btn btn-primary" style="background-color: #25D366; border: none;">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form reveal">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Olusegun Integrated Solution</h3>
+                    <p>Delivering integrated engineering and technology solutions with a commitment to quality and sustainability since 2022.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Stay Updated</h4>
+                    <p style="margin-bottom: 15px; font-size: 0.9rem;">Subscribe to our newsletter for the latest industry insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="padding: 12px; border-radius: 5px; border: none; width: 100%; margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 0.8rem;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Olusegun Integrated Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Sticky Navigation & Scroll Effects
+            const nav = document.querySelector('nav');
+            const backToTop = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 80) {
+                    nav.classList.add('sticky');
+                    backToTop.style.display = 'flex';
+                } else {
+                    nav.classList.remove('sticky');
+                    backToTop.style.display = 'none';
+                }
+                reveal();
+            });
+
+            // 2. Mobile Navigation Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+
+            // 3. Scroll Reveal Animation
+            const reveal = () => {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach(el => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = el.getBoundingClientRect().top;
+                    const elementVisible = 100;
+                    if (elementTop < windowHeight - elementVisible) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+
+            // 4. Animated Counters
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+
+            const startCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            // Intersection Observer for counters
+            const statsSection = document.querySelector('.stats-grid');
+            if (statsSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        startCounters();
+                        observer.unobserve(statsSection);
+                    }
+                }, { threshold: 0.5 });
+                observer.observe(statsSection);
+            }
+
+            // 5. Testimonial Slider
+            const track = document.querySelector('.testimonial-track');
+            const slides = Array.from(document.querySelectorAll('.testimonial-item'));
+            let currentSlide = 0;
+
+            const moveSlide = () => {
+                if (!track || slides.length === 0) return;
+                currentSlide++;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            };
+
+            if (track && slides.length > 1) {
+                setInterval(moveSlide, 5000);
+            }
+
+            // 6. Dark/Light Mode Switch
+            const themeBtn = document.getElementById('theme-btn');
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme) {
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                themeBtn.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
+            }
+
+            themeBtn.addEventListener('click', () => {
+                let theme = document.documentElement.getAttribute('data-theme');
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeBtn.innerHTML = '🌙';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeBtn.innerHTML = '☀️';
+                }
+            });
+
+            // 7. Form Validation
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = contactForm.querySelector('input[name="name"]').value;
+                    const email = contactForm.querySelector('input[name="email"]').value;
+                    
+                    if (name && email) {
+                        alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} soon.`);
+                        contactForm.reset();
+                    }
+                });
+            }
+
+            // 8. Back to Top Click
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Initial call
+            reveal();
+        });
+    </script>
+</body>
+</html>
